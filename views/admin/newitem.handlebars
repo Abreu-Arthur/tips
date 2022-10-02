@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New item</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color:#fff;
+            background-color: #000;
+        }
+        #box{
+            height:400px;
+            width:450px;
+            border:1px solid #fff;
+            border-radius: 8px;
+            text-align: left;
+            background-color: #000;
+            overflow: auto;
+            color:#fff;
+            padding-left: 20px;
+            padding-top: 10px;
+            margin-top: 50px;
+            box-sizing: border-box;
+        }   
+        label{
+            color:aqua;
+            margin-top: 20px;
+        }
+        #item,#imp,#day,#hr{
+            width:390px;
+            height:30px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #item{
+            resize:none;
+            width:410px;
+            height:60px;
+            text-align: left;
+        }
+        #create{
+            width:350px;
+            height:35px;
+            border:1px solid #fff;
+            border-radius: 15px;
+            background-color: #000;
+            color:#fff;
+            margin-top: 20px;
+            margin-left: 30px;
+            transition: transform 2s;
+        }
+    </style>
+</head>
+<body>
+    {{#each playlist}}
+        <div id="box">
+            <form action="/itemcreated" method="post">
+                <input type="hidden" name="id" value="{{_id}}">      
+                <label>ITEM:</label><br>
+                <textarea name="item" id="item"></textarea><br>
+                <label>Relevance:</label><br>
+                <input type="number" name="imp" min="1" max="3" id="imp"><br>
+                <label>Dia:</label><br>
+                <input type="number" name="dia" min="1" max="31" id="day"><br>
+                <label>Horário:</label><br>
+                <input type="hour" name="hora" id="hr"><br>
+                <button type="submit" id="create" onclick="rodar(this)">Create</button>
+            </form>
+        </div>
+    {{/each}}
+    <script>
+        function rodar(obj){
+            obj.style.transform='rotateX(360deg)'
+        }
+    </script>
+</body>
+</html>

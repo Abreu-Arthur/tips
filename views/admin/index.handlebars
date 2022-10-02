@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips</title>
+    <style>
+        body{
+            background-color: #000;
+            display: flex;
+            flex-direction: row;
+            color:#fff;
+            flex-wrap: wrap;
+        }
+        #box{
+            height:auto;
+            width:850px;
+            border:1px solid #fff;
+            border-radius: 8px;
+            text-align: left;
+            background-color: #000;
+            overflow: auto;
+            color:#fff;
+            padding-left: 10px;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+        #box::-webkit-scrollbar{
+            width:6px;
+        }
+        #box::-webkit-scrollbar-track{
+            background: #000;
+        }
+        #box::-webkit-scrollbar-thumb{
+            background-color: #fff;
+            border-radius: 10px;
+            border:1px solid #000
+        }
+        #imp{
+            width:50px;
+            height:25px;
+            border-radius: 5px;
+            border:0px solid #000;
+            background-color: #000;
+            color:#fff
+        }
+        #space{
+            height:50px;
+            width:auto;
+            visibility: hidden;
+        }
+        #options{
+            border:1px solid #fff;
+            width:200px;
+            height: 260px;
+            border-radius: 5px;
+            text-align: center;
+            transition:width 2s
+        }
+        #options:hover{
+            width:300px;
+        }
+        #create,#createaccount,#login,#myacount,#newplaylist,#playlists{
+            width:200px;
+            height:30px;
+            text-align: center;
+            font-style: italic;
+            font-size: 15px;
+            color:#fff;
+            background-color: #000;
+        }
+        #create:hover,#createaccount:hover,#login:hover,#myacount:hover,#newplaylist:hover,#playlists:hover{
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #fff;
+            zoom:110%;
+        }
+        #bx1{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+        #hora{
+            color:aqua
+        }
+        #buttons{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #edit,#tcoment,#ccoment,#sub{
+            width:100px;
+            height:30px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            background-color: #000;
+            color:#fff;
+        }
+        #edit:hover,#tcoment:hover,#ccoment:hover,#sub:hover{
+            transform: translateY(-20px);
+        }
+    </style>
+</head>
+<body>
+    <section id="options">
+        <h1>Welcome to Tips</h1>
+        <a href="/create"><button id="create">NEW</button></a><br>
+        <a href="/createaccount"><button id="createaccount">Criar conta</button></a><br>
+        <a href="/login"><button id="login">Logar</button></a><br>
+        <a href="/user"><button id="myacount">My account</button></a><br>
+        <a href="/newplaylist"><button id="newplaylist">New Playlist</button></a><br>
+        <a href="/myplaylists"><button id="playlists">Playlists</button></a>
+    </section>
+    <section id="todos">
+            <div id="space"></div>
+            {{#each todos}}
+                <div id="box">
+                    <b>{{todo}}</b><br>
+                    <p id="hora">{{hora}}</p>                          
+                    <section id="buttons">
+                        <input id="imp" type="button" value="{{imp}}" onmouseover="deCor(this)" onmouseout="semCor(this)">
+                        <a href="/edit/{{_id}}"><button id="edit">Edit</button></a>
+                        <a href="/coment/{{_id}}"><button id="tcoment">Comentar</button></a>
+                        <a href="ccoments/{{_id}}"><button id="ccoment">C Coments</button></a>
+                        <form action="/checked" method="post">
+                            <input type="hidden" name="id" value={{_id}}>
+                            <button type="submit" id="sub">Checked</button>
+                        </form>
+                    </section>
+                </div>
+                <script>
+                    function deCor(obj){
+                        if(obj.value==1){
+                            obj.style.backgroundColor='#800'
+                        }
+                        if(obj.value==2){
+                            obj.style.backgroundColor='#bb0'
+                        }
+                        if(obj.value==3){
+                            obj.style.backgroundColor='#008'
+                        }
+                    }
+                    function semCor(obj){
+                        obj.style.backgroundColor='#000'
+                    }
+                </script>
+            {{else}}
+                <b>Não há tarefas a serem exibidas</b>
+            {{/each}}
+    </section>
+</body>
+</html>

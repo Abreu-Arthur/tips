@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment it</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            perspective: 1000px;
+            background-color: #000;
+        }
+        #box{
+            width:400px;
+            height:500px;
+            border:1px solid #fff;
+            border-radius: 15px;
+            margin-top: 80px;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        #box:hover{
+            transform: rotateY(40deg);
+        }
+        label{
+            font-size: 20px;
+            color:aqua;
+            font-style: italic;
+        }
+        #coment{
+            width:360px;
+            height:300px;
+            border:1px solid #fff;
+            resize: none;
+        }
+        #sub{
+            width:360px;
+            height:50px;
+            border:1px solid #000;
+            border-radius: 15px;
+            margin-top: 30px;
+            background-color: #ff09b5;
+            box-shadow: -20px -20px 5px #cc06b3;
+        }
+    </style>
+</head>
+<body>
+    {{#each todo}}
+        <div id="box" ondblclick="voltar(this)" onmouseover="rotac(this)">
+            <form action="/comented" method="post">
+                <input type="hidden" name="id" value="{{_id}}">
+                <label>Your coment:</label><br>
+                <textarea name="coment" cols="30" rows="10" id="coment"></textarea><br>
+                <button type="submit" id="sub">Coment it</button>
+            </form>
+        </div>
+    {{/each}}
+    <script>
+        function voltar(obj){
+            obj.style.transform='rotateY(0deg)'
+        }
+        function rotac(obj){
+            obj.style.transform='rotateY(40deg)'
+        }
+    </script>
+</body>
+</html>

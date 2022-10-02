@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+        }
+        #box{
+            width:450px;
+            height:480px;
+            border:1px solid #fff;
+            margin-top: 50px;
+            border-radius: 20px;
+            padding:15px;
+            box-sizing: border-box;
+        }
+        label{
+            color:aqua;
+            font-size:20px;
+        }
+        #nome,#username,#email,#senha{
+            width:400px;
+            height:40px;
+            border:1px solid #000;
+            border-radius: 10px;
+            color:#fff;
+            transition:height 2.5s;
+            margin-top:20px ;
+            color:#000
+        }
+        #nome:hover,#username:hover,#email:hover,#senha:hover{
+            transform: translateX(50px)
+        }
+        #create{
+            width:400px;
+            height:40px;
+            border:1px solid #fff;
+            background-color: #000;
+            border-radius: 10px;
+            margin-top: 20px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <form action="/usercreated" method="post">
+            <label>Nome:</label><br>
+            <input type="text" name="nome" id="nome"><br>
+            <label>Nickname:</label><br>
+            <input type="text" name="username" id="username"><br>
+            <label>Email:</label><br>
+            <input type="text" name="email" id="email"><br>
+            <label>Senha de usuário:</label><br>
+            <input type="text" name="senha" id="senha"><br>
+            <button type="submit" id="create" onmouseover="corzin(this)">Criar conta</button>
+        </form>
+    </div>
+    <script>
+        function corzin(obj){
+            var r=Math.floor(Math.random()*255)
+            var g=Math.floor(Math.random()*255)
+            var b=Math.floor(Math.random()*255)
+            obj.style.backgroundColor='rgb('+r+','+g+','+b+')'
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See your itens</title>
+    <style>
+        body{
+            color:#fff;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+        }
+        #box{
+            width:800px;
+            height:150px;
+            border:2px solid #fff;
+            border-radius: 8px;
+            color:aquamarine;
+            margin-top: 20px;
+        }
+        #options{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #edit{
+            height:20px;
+            width:150px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            background-color: #000;
+            color:#fff
+        }
+        #edit:hover{
+            color:#000;
+            background-color: #fff;
+        }
+        #imp{
+            width: 50px;
+            height:25px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            background-color: #000;
+            color:#fff
+        }
+        #checked{
+            width:80px;
+            height: 25px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            background-color: #000;
+            color: #fff;
+        }
+        #checked:hover{
+            filter:brightness(350%)
+        }
+    </style>
+</head>
+<body>
+    <h2>Your itens</h2>
+    {{#each itens}}
+        <div id="box">
+            <p>{{item}}</p><br>
+            <p>{{hora}}</p>
+            <section id="options">
+                <input id="imp" type="button" value="{{imp}}" onmouseover="deCor(this)" onmouseout="semCor(this)">
+                <a href="/edit/{{_id}}"><button id="edit">Edit</button></a>
+                <form action="/checkediten" method="post">
+                    <input type="hidden" name="id" value={{_id}}>
+                    <button type="submit" id="checked">Checked</button>
+                </form>
+            </section>
+                <script>
+                    function deCor(obj){
+                        if(obj.value==1){
+                            obj.style.backgroundColor='#800'
+                        }
+                        if(obj.value==2){
+                            obj.style.backgroundColor='#dd0'
+                        }
+                        if(obj.value==3){
+                            obj.style.backgroundColor='#008'
+                        }
+                    }
+                    function semCor(obj){
+                        obj.style.backgroundColor='#000'
+                    }
+                </script>
+                {{else}}
+                <b>Não há itens a serem exibidos</b>
+        </div>
+    {{/each}}
+</body>
+</html>

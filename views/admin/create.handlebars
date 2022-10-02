@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips</title>
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+        }
+        #box{
+            width:450px;
+            height:480px;
+            border:1px solid #fff;
+            margin-top: 50px;
+            border-radius: 20px;
+            padding:15px;
+            box-sizing: border-box;
+        }
+        #todo{
+            width:400px;
+            height:120px;
+            border:1px solid #aaa;
+            border-radius: 10px;
+            resize: none;
+            margin-top: 10px;
+        }
+        #number,#date,#time{
+            width:400px;
+            height:30px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 15px;
+            margin-top: 10px;
+            transition: height 2s
+        }
+        #number:hover,#date:hover,#time:hover{
+            height:40px
+        }
+        label{
+            color:#fff;
+            margin-top: 20px;
+        }
+        #clean,#create{
+            width:70px;
+            height: 30px;
+            border:1px solid #fff;
+            background-color: #000;
+            border-radius: 10px;
+            margin:40px;
+            margin-left: 80px;
+            color:#fff
+        }
+        #clean:hover,#create:hover{
+            zoom: 105%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+    <form action="/created" method="post">
+        <label>TODO:</label><br>
+        <textarea name="todo" id="todo" onmouseover="corzin(this)"></textarea><br>
+        <label>Relevance:</label><br>
+        <input type="number" name="imp" min="1" max="3" id="number" onmouseover="corzin(this)"><br>
+        <label>Dia:</label><br>
+        <input type="number" name="dia" min="1" max="31" id="date" onmouseover="corzin(this)"><br>
+        <label>Horário:</label><br>
+        <input type="time" name="hora" id="time" onmouseover="corzin(this)"><br>
+        <input type="reset" value="Clean" id="clean">
+        <button type="submit" id="create">Create</button>
+    </form>
+    </div>
+    <script>
+        function corzin(obj){
+            var r=Math.floor(Math.random()*255)
+            var g=Math.floor(Math.random()*255)
+            var b=Math.floor(Math.random()*255)
+            obj.style.backgroundColor='rgb('+r+','+g+','+b+')'
+        }
+    </script>
+</body>
+</html>

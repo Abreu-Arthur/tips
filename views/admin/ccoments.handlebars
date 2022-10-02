@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEE YOUR COMENTS</title>
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+            color:#fff;
+            perspective: 1000px;
+        }
+        #cont{
+            width:500px;
+            height:100px;
+            border:1px solid #fff;
+            border-radius: 10px;
+            background-color: #000;
+            color:#fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #cont:hover{
+            transform:rotateX(30deg)
+        }
+    </style>
+</head>
+<body>
+    <h2>See your coments here</h2>
+    {{#each coments}}
+        <div id="cont">
+            <p>{{coment}}</p>
+        </div>
+    {{else}}
+        <h2>No coments here</h2>
+    {{/each}}
+</body>
+</html>
